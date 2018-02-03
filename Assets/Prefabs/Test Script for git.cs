@@ -6,7 +6,7 @@ public class TestScriptforgit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		// Test Stuff wew!!!!!
 	}
 	
 	// Update is called once per frame
