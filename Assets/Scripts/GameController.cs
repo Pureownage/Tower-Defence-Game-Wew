@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public int money = 100;
-    private int lives = 20;
+    private int lives = 2;
     bool StopTime = false;
+    public int timer;
 
 
     public Text moneyText;
     public Text liveText;
+    public Text timeLeft;
     // Get and setters, so we don't need to do everything every frame, instead only when it needs to be updated.
     public int Lives
     {
@@ -37,7 +39,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //  Does the player want to stop time? Lets Find out
-        // Here, wewant to see if the player pressed space bar to stop time or resume time
+        timeLeft.text = "Time remaining :" + timer.ToString();
         if (Input.GetKeyDown("space"))
         {
             //If they did, we find out if they are stopped or not.

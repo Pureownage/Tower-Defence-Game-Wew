@@ -50,7 +50,7 @@ public class EnemyMovement : MonoBehaviour {
             }
         }
         // After all the checks to see how we want to see where we want to move, move to that current waypoint.
-        // That way, we only move if we have a current waypoint.
+        // That way, we only move if we have a current waypoint, and we need to move to it.
         direction = this.transform.position - path[currentPoint].position;
         transform.LookAt(path[currentPoint]);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -59,7 +59,8 @@ public class EnemyMovement : MonoBehaviour {
     // Here, something has hit us, so we are going to take some damage.
     public void BeHit(float d)
     {
-        enemyHealth = enemyHealth - d;
+        enemyHealth -= d;
+        // If the damage we take, takes us below 0, we destory ourselves.
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);

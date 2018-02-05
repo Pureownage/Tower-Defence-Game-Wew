@@ -19,20 +19,7 @@ public class TowerManager : MonoBehaviour
     void Start()
     {
         // Here we just do some basic bookkeeping. Setting up the targets and pointing at them
-        /* TO DO: Do we still need this? We do it in the update anyway
-         * We still need the barrellook transform stuff so we set the transform (Or should we do it during decleration?) 
-         * But I don't think we need anything else really. Everything is done in the update which is called after start.
-         * Need to do some testing to find out.
-         */
         BarrelLook = transform.Find("Barrel");
-        EnemyMovement[] Enemys = GameObject.FindObjectsOfType<EnemyMovement>(); 
-        EnemyMovement Target = LocateTarget(Enemys);
-        TargetPos = Target.transform.position;
-        HoldTarget = TargetPos;
-        print("Found Starting Target");
-        //print(TargetPos);
-        BarrelLook.transform.LookAt(TargetPos);
-        BarrelLook.transform.Rotate(new Vector3(1.0f, 0, 0), 90);
     }
 
     // Update is called once per frame
@@ -42,7 +29,6 @@ public class TowerManager : MonoBehaviour
         EnemyMovement[] Enemys = GameObject.FindObjectsOfType<EnemyMovement>();
         // Find the closest enemy and make them our current target
         EnemyMovement Target = LocateTarget(Enemys);
-        print("Finding Target");
         // If there is no valid target to shoot, reset the barrel to look forward and end this update.
         if(Target == null)
         {
@@ -72,7 +58,6 @@ public class TowerManager : MonoBehaviour
         {
             FireRateCooldown = FireRate;
             ShootAt(Target);
-           // print("Firing!");
         }
     }
 
