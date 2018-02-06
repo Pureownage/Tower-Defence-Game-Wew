@@ -4,10 +4,10 @@ using System.Collections;
 public class EnemyController: MonoBehaviour {
 
     public float Health = 2f;
-    AudioSource audio;
+    //AudioSource audio;
 	// Use this for initialization
 	void Start () {
-        audio = GetComponent<AudioSource>();
+        //audio = GetComponent<AudioSource>();
         
     
 	}

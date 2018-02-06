@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
     public int money = 100;
     private int lives = 20;
     bool StopTime = false;
-    public int timer;
+    public float timer = 30;
 
 
     public Text moneyText;
@@ -33,14 +33,23 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         moneyText.text = "Money : " + money.ToString();
-        liveText.text = "Lives :" + lives.ToString();
-        timeLeft.text = "Time remaining :" + timer.ToString();
+        liveText.text = "Lives : " + lives.ToString();
+        timeLeft.text = "Time :" + timer.ToString("#.##");
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            print("Less than 0");
+            timer = 30;
+        }
+
+        timeLeft.text = "Time : " + timer.ToString("#.##");
         //  Does the player want to stop time? Lets Find out
-        timeLeft.text = "Time remaining :" + timer.ToString();
+
         // Here, we want to see if the player pressed space bar to stop time or resume time
         if (Input.GetKeyDown("space"))
         {

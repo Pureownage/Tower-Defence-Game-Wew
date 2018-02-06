@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour {
         if(Target == null)
         {
             Destroy(gameObject);
+            return;
         }
         Vector3 Direction = Target.position - this.transform.localPosition;
         // How far we are going to travel to hit the target. This is done so we can pause time if needs be.
