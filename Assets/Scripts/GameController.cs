@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
     private int lives = 20;
     bool StopTime = false;
     public float timer = 30;
-
+    public GameObject enemySpawner;
 
     public Text moneyText;
     public Text liveText;
@@ -35,16 +35,18 @@ public class GameController : MonoBehaviour {
         moneyText.text = "Money : " + money.ToString();
         liveText.text = "Lives : " + lives.ToString();
         timeLeft.text = "Time :" + timer.ToString("#.##");
+        enemySpawner = GameObject.Find("enemySpawner");
     }
 	
 	// Update is called once per frame
 	void Update () {
-
+        // Countdown the timer, using delta time so we know when time is stopped.
         timer -= Time.deltaTime;
+        // If the timer is less than 0, we reset the timer and trigger the enemy spawner to spawn.
         if (timer <= 0)
         {
-            print("Less than 0");
             timer = 30;
+            enemySpawner.GetComponent<EnemySpawner>().TriggerSpawn();
         }
 
         timeLeft.text = "Time : " + timer.ToString("#.##");
