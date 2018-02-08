@@ -38,6 +38,24 @@ public class GameController : MonoBehaviour {
         enemySpawner = GameObject.Find("enemySpawner");
     }
 	
+
+    // Here we attempt to buy a tower. If the cost 
+    public bool BuyTower(int cost)
+    {
+        // If we take the cost away from our money and are left with less than 0, then we return false as we cannot buy it.
+        if((money - cost) < 0)
+        {
+            return false;
+        }
+        // Otherwise, we buy it and change the ui.
+        else
+        {
+            money -= cost;
+            moneyText.text = "Money : " + money.ToString();
+            return true;
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
         // Countdown the timer, using delta time so we know when time is stopped.

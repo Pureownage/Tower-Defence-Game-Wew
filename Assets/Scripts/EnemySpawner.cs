@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour {
         {
             if(spawnCountdown <= 0)
             {
-                Instantiate(enemyToSpawn);
+                Instantiate(enemyToSpawn,this.transform.position,this.transform.rotation);
                 spawnCountdown = 1;
                 numberToSpawn--;
             } else

@@ -77,6 +77,8 @@ public class EnemyMovement : MonoBehaviour {
         // If the damage we take, takes us below 0, we destory ourselves.
         if (enemyHealth <= 0)
         {
+            GameController controller = GameObject.FindObjectOfType<GameController>();
+            controller.money = controller.money + 20;
             Destroy(gameObject);
         }
     }
